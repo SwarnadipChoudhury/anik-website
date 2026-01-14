@@ -6,7 +6,7 @@
   <title>Jivit Wellness – Luxury Yoga & Fitness</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -18,14 +18,13 @@
     :root {
       --gold: #d4af37;
       --dark-green: #1a3c34;
-      --light-green: #2c5e52;
       --light-bg: #fdfbf7;
       --text: #333;
       --white: #ffffff;
     }
 
     html {
-      scroll-behavior: smooth; /* Smooth Scrolling Magic */
+      scroll-behavior: smooth;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -44,25 +43,34 @@
       width: 100%;
       padding: 20px 5%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* Center logo on mobile */
       align-items: center;
       z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
     }
 
     nav .logo {
       font-family: 'Playfair Display', serif;
       color: var(--white);
-      font-size: 1.8rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+      font-size: 2.5rem; /* Logo Size Increased */
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 5px;
+    }
+
+    @media(min-width: 768px) {
+      nav { justify-content: space-between; }
     }
 
     /*--- Header Section (Hero) ---*/
     header {
       height: 100vh;
-      /* Yoga in Nature Background */
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(26,60,52,0.8)), 
-                  url('https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop');
+      /* Reliable Image Link */
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(26,60,52,0.7)), 
+                  url('https://images.unsplash.com/photo-1545205539-3ad22d1d734d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -71,16 +79,16 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      padding: 0 20px;
     }
-
-    .hero-content { z-index: 2; }
 
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 4.5rem;
+      font-size: 3.5rem; /* Base size */
       color: var(--gold);
       margin-bottom: 20px;
-      line-height: 1.2;
+      line-height: 1.1;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     }
 
     header h1 span {
@@ -88,55 +96,55 @@
       font-size: 1.5rem;
       color: var(--white);
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;
-      letter-spacing: 6px;
-      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 4px;
       margin-bottom: 10px;
     }
 
     header p {
       color: #f1f1f1;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 40px;
+      line-height: 1.6;
     }
 
     .btn-gold {
-      padding: 18px 50px;
+      padding: 16px 40px;
       background: var(--gold);
       color: var(--dark-green);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       border-radius: 50px;
-      transition: all 0.4s;
+      transition: all 0.3s;
       display: inline-block;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border: 2px solid var(--gold);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     }
 
     .btn-gold:hover {
-      background: transparent;
-      color: var(--gold);
-      transform: translateY(-5px);
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
     .scroll-down {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       color: var(--white);
       animation: bounce 2s infinite;
-      font-size: 1.5rem;
-      opacity: 0.8;
+      font-size: 2rem;
+      cursor: pointer;
     }
 
     /*--- About Natural Yoga Section ---*/
     .about-section {
-      padding: 100px 8%;
+      padding: 80px 8%;
       display: flex;
       align-items: center;
       gap: 50px;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* Important for mobile stacking */
     }
 
     .about-img {
@@ -144,70 +152,66 @@
       min-width: 300px;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 20px 20px 0px var(--gold);
+      box-shadow: 15px 15px 0px var(--gold);
+      height: 400px; /* Fixed height for consistency */
     }
 
-    .about-img img { width: 100%; display: block; transition: 0.5s; }
+    .about-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; /* Ensures image covers area without stretch */
+      transition: 0.5s; 
+    }
+    
     .about-img:hover img { transform: scale(1.05); }
 
     .about-text { flex: 1; min-width: 300px; }
-    
-    .section-head {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold);
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 10px;
-    }
 
     .about-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--dark-green);
       margin-bottom: 20px;
-      line-height: 1.2;
     }
 
-    .about-text p { color: #555; line-height: 1.8; margin-bottom: 20px; }
+    .about-text p { color: #555; line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
 
     /*--- Classes Section ---*/
     .services-section {
-      padding: 100px 8%;
+      padding: 80px 8%;
       background: #fff;
     }
 
     .section-title-center {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
     
     .section-title-center h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: var(--dark-green);
     }
 
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
 
     .service-card {
       background: var(--light-bg);
-      padding: 40px 30px;
+      padding: 40px 25px;
       border-radius: 15px;
       text-align: center;
-      transition: 0.4s;
+      transition: 0.3s;
       border: 1px solid #eee;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
     .service-card:hover {
       background: var(--dark-green);
       transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
 
     .service-card:hover h3, .service-card:hover p, .service-card:hover .icon-box {
@@ -215,40 +219,55 @@
     }
 
     .icon-box {
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: var(--gold);
-      margin-bottom: 25px;
-      transition: 0.4s;
+      margin-bottom: 20px;
     }
 
     .service-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: var(--dark-green);
       margin-bottom: 15px;
-      transition: 0.4s;
     }
 
-    .service-card p { color: #666; transition: 0.4s; }
+    .service-card p { color: #666; font-size: 0.95rem; line-height: 1.6; }
 
-    /*--- Asana Gallery (Natural Yoga Photos) ---*/
+    /*--- Zumba Energy Section ---*/
+    .zumba-banner {
+      background: linear-gradient(rgba(233, 30, 99, 0.7), rgba(26, 60, 52, 0.8)), 
+                  url('https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 5%;
+    }
+
+    .zumba-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    /*--- Asana Gallery ---*/
     .gallery-section {
-      padding: 100px 8%;
+      padding: 80px 8%;
       background: var(--light-bg);
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 15px;
     }
 
     .gallery-item {
-      height: 350px;
-      border-radius: 15px;
+      height: 300px;
+      border-radius: 12px;
       overflow: hidden;
       position: relative;
-      cursor: pointer;
     }
 
     .gallery-item img {
@@ -256,6 +275,7 @@
       height: 100%;
       object-fit: cover;
       transition: 0.5s ease;
+      display: block; /* Fixes tiny gap below images */
     }
 
     .gallery-item:hover img { transform: scale(1.1); }
@@ -267,44 +287,19 @@
       width: 100%;
       background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       color: white;
-      padding: 20px;
-      opacity: 0;
-      transition: 0.3s;
-      transform: translateY(20px);
+      padding: 15px;
     }
 
-    .gallery-item:hover .gallery-overlay { opacity: 1; transform: translateY(0); }
-
-    /*--- Zumba Energy Section ---*/
-    .zumba-banner {
-      background: linear-gradient(rgba(233, 30, 99, 0.8), rgba(26, 60, 52, 0.9)), 
-                  url('https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop');
-      background-attachment: fixed;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      padding: 120px 8%;
-    }
-
-    .zumba-banner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      margin-bottom: 20px;
-      animation: pulse 2s infinite;
-    }
-
-    .zumba-banner p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
-
-    /*--- Booking / Join Section ---*/
+    /*--- Booking Section ---*/
     .booking-section {
-      padding: 100px 8%;
+      padding: 80px 8%;
       background: var(--dark-green);
       color: white;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 50px;
+      gap: 40px;
     }
 
     .booking-text {
@@ -314,44 +309,42 @@
 
     .booking-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: var(--gold);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .booking-form-container {
       flex: 1;
-      min-width: 320px;
-      max-width: 500px;
+      min-width: 300px;
+      max-width: 450px;
       background: var(--white);
-      padding: 40px;
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
     .booking-form-container h3 {
       color: var(--dark-green);
       text-align: center;
-      margin-bottom: 25px;
-      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
     }
 
-    form .input-group {
-      margin-bottom: 15px;
-      position: relative;
-    }
+    form .input-group { margin-bottom: 15px; }
 
     form input, form select {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       border: 1px solid #ddd;
       border-radius: 8px;
       background: #f9f9f9;
       outline: none;
       font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
     }
 
-    form input:focus { border-color: var(--gold); }
+    form input:focus { border-color: var(--gold); background: #fff; }
 
     .whatsapp-btn {
       width: 100%;
@@ -368,28 +361,28 @@
       justify-content: center;
       gap: 10px;
       transition: 0.3s;
-      margin-top: 10px;
     }
 
-    .whatsapp-btn:hover { background: #128C7E; transform: scale(1.02); }
+    .whatsapp-btn:hover { background: #20b85c; }
 
     /*--- Footer ---*/
     footer {
       background: #111;
-      color: #888;
-      padding: 40px 0 20px;
+      color: #999;
+      padding: 40px 20px;
       text-align: center;
+      border-top: 5px solid var(--gold);
     }
     
     footer .social-links a {
       color: white;
-      margin: 0 15px;
-      font-size: 1.5rem;
+      margin: 0 12px;
+      font-size: 1.3rem;
       transition: 0.3s;
     }
     
     footer .social-links a:hover { color: var(--gold); }
-    footer p { margin-top: 20px; font-size: 0.9rem; }
+    footer p { margin-top: 15px; font-size: 0.85rem; }
 
     /* Keyframes */
     @keyframes bounce {
@@ -398,17 +391,34 @@
       60% {transform: translateY(-5px);}
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    /* Mobile */
+    /*--- MOBILE RESPONSIVENESS (Important) ---*/
     @media (max-width: 768px) {
-      header h1 { font-size: 3rem; }
-      .about-section, .booking-section { padding: 60px 5%; flex-direction: column; }
-      .about-img { width: 100%; }
+      /* Typography Adjustments */
+      header h1 { font-size: 2.5rem; }
+      header h1 span { font-size: 1rem; }
+      header p { font-size: 1rem; padding: 0 10px; }
+      
+      .about-text h2, 
+      .section-title-center h2, 
+      .zumba-banner h2, 
+      .booking-text h2 {
+        font-size: 2.2rem;
+      }
+
+      /* Layout Adjustments */
+      nav { padding: 15px; flex-direction: column; gap: 10px; }
+      nav .logo { font-size: 2rem; border-bottom: none; }
+      
+      .about-section { padding: 60px 5%; flex-direction: column; text-align: center; }
+      .about-img { width: 100%; height: 250px; box-shadow: none; margin-bottom: 20px; }
+      
+      .cards-container { grid-template-columns: 1fr; }
+      
+      .booking-section { flex-direction: column; text-align: center; padding: 60px 5%; }
+      .booking-form-container { width: 100%; }
+      
+      /* Disable complex parallax on mobile for better performance */
+      header, .zumba-banner { background-attachment: scroll; }
     }
   </style>
 </head>
@@ -422,67 +432,66 @@
   <!-- Hero Section -->
   <header>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-      <h1><span>Discover Inner Peace</span> Natural Yoga & Wellness</h1>
-      <p>Reconnect with nature and your soul. Join us for a transformative journey through Yoga, Meditation, and Dance.</p>
-      <!-- Smooth scroll target -->
+      <h1><span>Welcome to</span> JIVIT WELLNESS</h1>
+      <p>Your sanctuary for Yoga, Zumba, and holistic health. Experience the harmony of body, mind, and soul.</p>
       <a href="#about" class="btn-gold">Start Your Journey</a>
     </div>
-    <div class="scroll-down">
+    <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView();">
       <i class="fas fa-chevron-down"></i>
     </div>
   </header>
 
-  <!-- About Section (Natural Yoga) -->
+  <!-- About Section -->
   <section id="about" class="about-section">
     <div class="about-img" data-aos="fade-right">
-      <!-- Natural Yoga Image -->
-      <img src="https://images.unsplash.com/photo-1544367563-12123d8959bd?q=80&w=2074&auto=format&fit=crop" alt="Natural Yoga">
+      <!-- Fixed: Reliable Image Link -->
+      <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Natural Yoga">
     </div>
     <div class="about-text" data-aos="fade-left">
-      <span class="section-head">Our Philosophy</span>
+      <span style="color:var(--gold); letter-spacing:2px; font-weight:600;">OUR PHILOSOPHY</span>
       <h2>Harmony in Nature</h2>
-      <p>At Jivit Wellness, we believe yoga is not just an exercise but a way of living. Our "Natural Yoga" sessions are designed to align your breath with the rhythm of nature.</p>
-      <p>Whether you are a beginner or an expert, our luxury studio environment combined with organic teaching methods will help you find the balance you seek.</p>
+      <p>At <strong>Jivit Wellness</strong>, we believe yoga is not just an exercise but a way of living. Our "Natural Yoga" sessions are designed to align your breath with the rhythm of nature.</p>
+      <p>Join us to disconnect from the chaos and reconnect with your inner self through our specialized classes.</p>
     </div>
   </section>
 
   <!-- Classes Section -->
   <section class="services-section">
     <div class="section-title-center" data-aos="fade-up">
-      <h2>Holistic Classes</h2>
+      <h2>Our Premium Classes</h2>
       <div style="width: 60px; height: 3px; background:var(--gold); margin: 15px auto;"></div>
     </div>
     
     <div class="cards-container">
-      <div class="service-card" data-aos="flip-left" data-aos-delay="100">
-        <div class="icon-box"><i class="fas fa-leaf"></i></div>
-        <h3>Hatha Yoga</h3>
-        <p>Traditional postures to align skin, muscles, and bones. Great for stress relief.</p>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-box"><i class="fas fa-spa"></i></div>
+        <h3>Yoga</h3>
+        <p>Hatha, Vinyasa, and Power Yoga to build flexibility and mental peace.</p>
       </div>
 
-      <div class="service-card" data-aos="flip-left" data-aos-delay="200">
-        <div class="icon-box"><i class="fas fa-fire"></i></div>
-        <h3>Power Yoga</h3>
-        <p>A vigorous fitness-based approach to vinyasa-style yoga to build strength.</p>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-box"><i class="fas fa-music"></i></div>
+        <h3>Zumba</h3>
+        <p>High-energy dance workouts. Burn calories while dancing to global beats.</p>
       </div>
 
-      <div class="service-card" data-aos="flip-left" data-aos-delay="300">
-        <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon-box"><i class="fas fa-dumbbell"></i></div>
         <h3>Aerobics</h3>
-        <p>Rhythmic physical exercise with stretching and strength training routines.</p>
+        <p>Cardio exercises to boost your stamina and heart health.</p>
       </div>
     </div>
   </section>
 
-  <!-- Zumba Section (Animation & Energy) -->
+  <!-- Zumba Banner -->
   <section class="zumba-banner">
     <div data-aos="zoom-in">
       <h2>Feel The Rhythm!</h2>
-      <p>Join our high-energy Zumba classes. Dance your way to fitness with international beats and fun moves.</p>
+      <p>Sweat it out with our energetic Zumba sessions every evening.</p>
     </div>
   </section>
 
-  <!-- Gallery Section (Yoga Asana Photos) -->
+  <!-- Asana Gallery -->
   <section class="gallery-section">
     <div class="section-title-center" data-aos="fade-up">
       <h2>Asana Gallery</h2>
@@ -490,43 +499,40 @@
     </div>
     
     <div class="gallery-grid">
-      <!-- Image 1 -->
+      <!-- Fixed: Reliable Image Links -->
       <div class="gallery-item" data-aos="fade-up">
-        <img src="https://images.unsplash.com/photo-1593164842264-854604db00ea?q=80&w=2070&auto=format&fit=crop" alt="Yoga Pose 1">
-        <div class="gallery-overlay"><h3>Vrikshasana</h3></div>
+        <img src="https://images.unsplash.com/photo-1599447421405-0e32096b3071?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yoga Pose 1">
+        <div class="gallery-overlay"><h3>Balance</h3></div>
       </div>
-      <!-- Image 2 -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1926&auto=format&fit=crop" alt="Yoga Pose 2">
-        <div class="gallery-overlay"><h3>Padmasana</h3></div>
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yoga Pose 2">
+        <div class="gallery-overlay"><h3>Peace</h3></div>
       </div>
-      <!-- Image 3 -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1573590330099-d6c7355ec595?q=80&w=2070&auto=format&fit=crop" alt="Yoga Pose 3">
-        <div class="gallery-overlay"><h3>Surya Namaskar</h3></div>
+        <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yoga Pose 3">
+        <div class="gallery-overlay"><h3>Focus</h3></div>
       </div>
-      <!-- Image 4 -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://images.unsplash.com/photo-1566501206188-5dd0cf376088?q=80&w=1974&auto=format&fit=crop" alt="Yoga Pose 4">
-        <div class="gallery-overlay"><h3>Meditation</h3></div>
+        <img src="https://images.unsplash.com/photo-1573590330099-d6c7355ec595?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yoga Pose 4">
+        <div class="gallery-overlay"><h3>Strength</h3></div>
       </div>
     </div>
   </section>
 
-  <!-- Booking Section (Bottom) -->
+  <!-- Booking Section -->
   <section id="book-now" class="booking-section">
     <div class="booking-text" data-aos="fade-right">
-      <h2>Begin Your Transformation Today</h2>
-      <p>Slots are filling up fast. Reserve your spot for a free trial class or membership consultation.</p>
-      <ul style="margin-top:20px; list-style:none; line-height:2;">
-        <li><i class="fas fa-check-circle" style="color:var(--gold);"></i> Certified International Trainers</li>
-        <li><i class="fas fa-check-circle" style="color:var(--gold);"></i> Peaceful Luxury Ambience</li>
-        <li><i class="fas fa-check-circle" style="color:var(--gold);"></i> Personalized Diet Plans</li>
+      <h2>Book Your Free Trial</h2>
+      <p>Join the Jivit Wellness family today. Limited slots available for new batches.</p>
+      <ul style="margin-top:20px; list-style:none; line-height:2.2;">
+        <li><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Expert Trainers</li>
+        <li><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Morning & Evening Batches</li>
+        <li><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Personal Attention</li>
       </ul>
     </div>
 
     <div class="booking-form-container" data-aos="fade-left">
-      <h3>Book Your Slot</h3>
+      <h3>Enquire Now</h3>
       <form onsubmit="sendWhatsApp(event)">
         <div class="input-group">
           <input id="name" type="text" placeholder="Your Name" required>
@@ -536,14 +542,14 @@
         </div>
         <div class="input-group">
           <select id="service">
+            <option value="General Enquiry">Select Interest</option>
             <option value="Yoga Class">Yoga Class</option>
             <option value="Zumba Session">Zumba Session</option>
             <option value="Aerobics">Aerobics</option>
-            <option value="Private Training">Private Training</option>
           </select>
         </div>
         <button type="submit" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> Book via WhatsApp
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
         </button>
       </form>
     </div>
@@ -556,20 +562,21 @@
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
-    <p>&copy; 2026 Jivit Wellness. All Rights Reserved.</p>
+    <p>&copy; 2026 Jivit Wellness Yoga Studio. All Rights Reserved.</p>
     <p><i class="fas fa-map-marker-alt"></i> Pramath Nagar, Jamshedpur, Jharkhand</p>
   </footer>
 
-  <!-- Animation Script -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Initialize Animations
+    // Initialize AOS Animation
     AOS.init({
-      once: true, // Animation happens only once
-      offset: 100, // Trigger offset
+      once: true,
+      offset: 120,
+      duration: 1000,
     });
 
-    // WhatsApp Logic
+    // WhatsApp Function
     function sendWhatsApp(e) {
       e.preventDefault();
       
@@ -578,16 +585,14 @@
       const service = document.getElementById('service').value;
       
       if(!name || !phone) {
-        alert("Please enter name and phone number");
+        alert("Please fill your details.");
         return;
       }
 
-      // Format Message
-      const msg = `Namaste Jivit Wellness! %0aMy Name: ${name} %0aPhone: ${phone} %0aI want to book a slot for: ${service}. %0aPlease confirm availability.`;
+      const message = `Hello Jivit Wellness,%0aMy Name: ${name}%0aPhone: ${phone}%0aI am interested in: ${service}.%0aPlease share more details.`;
       
-      // Redirect
-      const url = `https://wa.me/919031739151?text=${msg}`;
-      window.open(url, '_blank');
+      const whatsappUrl = `https://wa.me/919031739151?text=${message}`;
+      window.open(whatsappUrl, '_blank');
     }
   </script>
 
