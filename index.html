@@ -8,10 +8,10 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome -->
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- AOS Animation -->
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -40,7 +40,7 @@
       width: 100%;
       padding: 20px 5%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end; /* Logo Text on right for desktop */
       align-items: center;
       z-index: 100;
       background: transparent;
@@ -51,18 +51,21 @@
       color: var(--white);
       font-size: 1.5rem; 
       font-weight: 700;
+      letter-spacing: 1px;
       display: none; 
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
 
     @media(min-width: 768px) { 
-      nav { justify-content: flex-end; } 
       nav .logo-text { display: block; }
     }
 
     /*--- Header Section ---*/
     header {
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1545205539-3ad22d1d734d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      /* Background Image: Beautiful Sunset Yoga */
+      background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
+                  url('https://images.unsplash.com/photo-1545205539-3ad22d1d734d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -73,13 +76,6 @@
       position: relative;
     }
 
-    .overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.3);
-      z-index: 1;
-    }
-
     .hero-content {
       z-index: 2;
       display: flex;
@@ -88,17 +84,34 @@
       padding: 0 20px;
     }
 
-    /*--- LOGO STYLE ---*/
-    .main-logo-img {
-      width: 180px;
-      height: 180px;
-      object-fit: contain;
+    /*--- AUTO-GENERATED LOGO DESIGN (No Image File Needed) ---*/
+    .logo-circle {
+      width: 140px;
+      height: 140px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 50%;
-      padding: 15px;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
       margin-bottom: 30px;
       animation: float 3s ease-in-out infinite;
+      border: 2px solid var(--gold);
+    }
+
+    .logo-circle i {
+      font-size: 3.5rem;
+      color: var(--dark-green);
+      margin-bottom: 5px;
+    }
+
+    .logo-circle span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
     }
 
     header h1 {
@@ -223,7 +236,8 @@
       header h1 { font-size: 2.5rem; }
       header h1 span { font-size: 1rem; }
       .about-text h2, .section-title-center h2, .zumba-banner h2, .booking-text h2 { font-size: 2.2rem; }
-      nav { padding: 15px; flex-direction: column; gap: 10px; }
+      nav { padding: 15px; justify-content: center; }
+      nav .logo-text { display: none; }
       .about-section, .booking-section { padding: 60px 5%; flex-direction: column; text-align: center; }
       .about-img { width: 100%; height: 250px; box-shadow: none; margin-bottom: 20px; }
       .cards-container { grid-template-columns: 1fr; }
@@ -241,12 +255,13 @@
 
   <!-- Hero Section -->
   <header>
-    <div class="overlay"></div> 
-    
     <div class="hero-content" data-aos="zoom-in" data-aos-duration="1500">
       
-      <!-- LOGO: Make sure 'logo.jpg' is in your folder -->
-      <img src="logo.jpg" alt="Jivit Logo" class="main-logo-img">
+      <!-- AUTOMATIC LOGO (No Image File Needed) -->
+      <div class="logo-circle">
+        <i class="fas fa-spa"></i>
+        <span>JIVIT</span>
+      </div>
 
       <h1><span>Welcome to</span> JIVIT WELLNESS</h1>
       <p>Your sanctuary for Yoga, Zumba, and holistic health. Experience the harmony of body, mind, and soul.</p>
@@ -261,7 +276,8 @@
   <!-- About Section -->
   <section id="about" class="about-section">
     <div class="about-img" data-aos="fade-right">
-      <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=800&q=80" alt="Natural Yoga">
+      <!-- Image: Woman in Nature -->
+      <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Natural Yoga">
     </div>
     <div class="about-text" data-aos="fade-left">
       <span style="color:var(--gold); letter-spacing:2px; font-weight:600;">OUR PHILOSOPHY</span>
@@ -304,7 +320,7 @@
     </div>
   </section>
 
-  <!-- Asana Gallery (YOUR 4 PHOTOS) -->
+  <!-- Asana Gallery (IMAGES ARE NOW FIXED) -->
   <section class="gallery-section">
     <div class="section-title-center" data-aos="fade-up">
       <h2>Asana Gallery</h2>
@@ -312,27 +328,27 @@
     </div>
     <div class="gallery-grid">
       
-      <!-- PHOTO 1: Meditation Silhouette -->
+      <!-- 1. Meditation -->
       <div class="gallery-item" data-aos="fade-up">
-        <img src="gallery1.jpg" alt="Meditation">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Meditation">
         <div class="gallery-overlay"><h3>Inner Peace</h3></div>
       </div>
       
-      <!-- PHOTO 2: Group Class -->
+      <!-- 2. Group Class -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-        <img src="gallery2.jpg" alt="Group Yoga">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Group Yoga">
         <div class="gallery-overlay"><h3>Community</h3></div>
       </div>
       
-      <!-- PHOTO 3: Cobra Pose -->
+      <!-- 3. Cobra Pose -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-        <img src="gallery3.jpg" alt="Cobra Pose">
+        <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cobra Pose">
         <div class="gallery-overlay"><h3>Flexibility</h3></div>
       </div>
       
-      <!-- PHOTO 4: Advanced Pose -->
+      <!-- 4. Advanced Pose -->
       <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-        <img src="gallery4.jpg" alt="Advanced Yoga">
+        <img src="https://images.unsplash.com/photo-1593164842264-854604db00ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Advanced Yoga">
         <div class="gallery-overlay"><h3>Mastery</h3></div>
       </div>
 
