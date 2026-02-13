@@ -3,374 +3,308 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jivit Wellness | Global Elite Yoga</title>
+    <title>Jivit Wellness | The Art of Living</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --gold: #e2c044;
-            --gold-soft: #f4d03f;
-            --emerald: #051612;
-            --emerald-mid: #0a2e26;
+            --gold: #c5a059;
+            --gold-light: #e6d5b8;
+            --cream: #fdfbf7;
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.03);
-            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --text: #2a2a2a;
+            --accent: #1a3c34;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; cursor: default; }
+        /* Custom Cursor */
+        #cursor {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            display: none;
+        }
+
+        @media (min-width: 1024px) { #cursor { display: block; } }
+
+        * { margin:0; padding:0; box-sizing:border-box; cursor: none !important; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--emerald);
-            color: var(--white);
-            line-height: 1.7;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /*--- Exclusive Scrollbar ---*/
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--emerald); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+        /* Floating Background Shapes */
+        .bg-shape {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+            animation: move 20s infinite alternate;
+        }
 
-        /*--- Dynamic Navigation ---*/
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 30px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: var(--transition-smooth);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(226, 192, 68, 0.1);
+            top: 0; width: 100%; padding: 25px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(226, 192, 68, 0.3);
+            font-size: 1.8rem; font-weight: 900; color: var(--text);
+            letter-spacing: 2px;
         }
 
-        /*--- Hero Section (Parallax) ---*/
+        /* Hero Section */
         header {
             height: 100vh;
-            background: linear-gradient(rgba(5, 22, 18, 0.7), rgba(5, 22, 18, 0.8)),
-                        url('https://images.unsplash.com/photo-1545205539-3ad22d1d734d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+            background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.2)),
+                        url('https://images.unsplash.com/photo-1545205539-3ad22d1d734d?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
-        .hero-content { z-index: 10; padding: 0 20px; }
-
-        .hero-content h1 {
+        .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900; line-height: 0.8;
+            color: var(--text); margin-bottom: 20px;
         }
 
-        .hero-content h1 span {
-            display: block;
-            font-size: 1.2rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 12px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        /*--- Animated Buttons ---*/
-        .btn-gold {
-            position: relative;
-            padding: 20px 60px;
-            background: var(--gold);
-            color: var(--emerald);
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-radius: 100px;
-            transition: var(--transition-smooth);
+        .hero-subtitle {
+            font-size: 1rem; letter-spacing: 10px;
+            text-transform: uppercase; color: var(--gold);
+            font-weight: 700; margin-bottom: 30px;
             display: inline-block;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(226, 192, 68, 0.2);
-            cursor: pointer;
         }
 
-        .btn-gold::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
+        .btn-main {
+            padding: 20px 50px;
+            background: var(--text); color: var(--white);
+            text-decoration: none; border-radius: 0;
+            font-weight: 800; letter-spacing: 2px;
+            position: relative; overflow: hidden;
+            display: inline-block; transition: var(--transition);
         }
 
-        .btn-gold:hover::before { left: 100%; }
-        .btn-gold:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 20px 50px rgba(226, 192, 68, 0.4); }
-
-        /*--- Floating Logo ---*/
-        .logo-circle {
-            width: 160px;
-            height: 160px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            margin: 0 auto 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: float 6s ease-in-out infinite;
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(5px);
+        .btn-main:hover {
+            background: var(--gold);
+            transform: translateY(-5px) scale(1.05);
         }
 
-        .logo-circle i { font-size: 3.5rem; color: var(--gold); filter: drop-shadow(0 0 10px var(--gold)); }
-
-        /*--- Scroll Animations Section ---*/
+        /* Cards & Sections */
         section { padding: 120px 10%; position: relative; }
 
-        .reveal-text {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            color: var(--gold);
-            margin-bottom: 20px;
-            line-height: 1.1;
+        .section-tag {
+            color: var(--gold); font-weight: 800; letter-spacing: 5px;
+            display: block; margin-bottom: 15px;
         }
 
-        /*--- Card Animations ---*/
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
         }
 
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 40px;
-            border-radius: 20px;
-            text-align: center;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+        .luxury-card {
+            background: var(--white); padding: 60px 40px;
+            border: 1px solid #f0f0f0; transition: var(--transition);
+            text-align: center; position: relative;
         }
 
-        .glass-card:hover {
-            background: var(--emerald-mid);
+        .luxury-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 40px 80px rgba(197, 160, 89, 0.15);
             border-color: var(--gold);
-            transform: translateY(-20px) scale(1.02);
         }
 
-        .glass-card i {
-            font-size: 4rem;
-            color: var(--gold);
-            margin-bottom: 30px;
+        .luxury-card i {
+            font-size: 3rem; color: var(--gold); margin-bottom: 25px;
             transition: 0.5s;
         }
 
-        .glass-card:hover i { transform: rotateY(360deg); }
+        .luxury-card:hover i { transform: scale(1.2) rotateY(180deg); }
 
-        /*--- Gallery 3D ---*/
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        /* Gallery Overhaul */
+        .gallery-wrap {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        .gallery-item {
-            height: 450px;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        .gallery-box {
+            height: 400px; overflow: hidden; position: relative;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        .gallery-box img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .gallery-item:hover img { transform: scale(1.15); filter: brightness(0.7); }
+        .gallery-box:hover img { transform: scale(1.2); filter: sepia(0.5); }
 
-        /*--- Form & Footer ---*/
-        .form-box {
-            background: var(--emerald-mid);
-            padding: 60px;
-            border-radius: 30px;
-            border: 1px solid rgba(226, 192, 68, 0.2);
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        /* Form Styling */
+        .form-container {
+            background: var(--white); padding: 80px;
+            max-width: 800px; margin: 0 auto;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--gold);
         }
 
         input, select {
-            width: 100%;
-            padding: 20px;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            font-size: 1rem;
+            width: 100%; padding: 20px; border: none;
+            background: #f8f8f8; margin-bottom: 20px;
+            font-family: inherit; font-size: 1rem;
             transition: 0.3s;
         }
 
-        input:focus { border-color: var(--gold); outline: none; background: rgba(0,0,0,0.4); }
+        input:focus { background: #fff; box-shadow: 0 10px 20px rgba(197, 160, 89, 0.1); outline: none; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-30px) rotate(5deg); }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
 
-        /*--- Responsive Fixes ---*/
         @media (max-width: 768px) {
-            header h1 { font-size: 3.5rem; }
-            section { padding: 80px 5%; }
-            .logo-circle { width: 120px; height: 120px; }
+            header { clip-path: none; }
+            .hero-title { font-size: 4rem; }
+            .form-container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div id="cursor"></div>
+    <div class="bg-shape" style="top: 10%; left: 5%;"></div>
+    <div class="bg-shape" style="bottom: 10%; right: 5%; animation-delay: -5s;"></div>
+
     <nav id="navbar">
-        <div class="logo-text">JIVIT</div>
-        <div style="font-size: 0.7rem; letter-spacing: 5px; color: var(--gold); font-weight: 800;">EST. 2026</div>
+        <div class="logo-text" data-aos="fade-down">JIVIT WELLNESS</div>
+        <div style="letter-spacing: 4px; font-weight: 800; font-size: 0.7rem; color: var(--gold);" data-aos="fade-down">VIRTUE & VIGOR</div>
     </nav>
 
     <header>
         <div class="hero-content">
-            <div class="logo-circle" data-aos="zoom-in" data-aos-duration="1500">
-                <i class="fas fa-spa"></i>
-            </div>
-            <h1 data-aos="fade-up" data-aos-delay="300">
-                <span>Transcend the Ordinary</span>
-                JIVIT WELLNESS
-            </h1>
-            <div data-aos="fade-up" data-aos-delay="600">
-                <a href="#about" class="btn-gold">Begin The Experience</a>
+            <span class="hero-subtitle" data-aos="fade-up">Elite Health Sanctuary</span>
+            <h1 class="hero-title" data-aos="zoom-out" data-aos-delay="200">SOUL<br>BALANCE</h1>
+            <div data-aos="fade-up" data-aos-delay="500">
+                <a href="#book" class="btn-main">EXPLORE BEYOND</a>
             </div>
         </div>
     </header>
 
-    <section id="about">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div class="reveal-text" data-aos="fade-right" data-aos-duration="1500">
-                Crafted for the <br><i style="font-family: serif; color: white;">Modern Soul.</i>
-            </div>
-            <p style="font-size: 1.3rem; max-width: 700px; opacity: 0.8;" data-aos="fade-up" data-aos-delay="300">
-                We don't just teach movement; we curate atmosphere. Jivit Wellness is Jamshedpur's premiere sanctuary for those who seek elite physical mastery and absolute mental silence.
+    <section>
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <span class="section-tag" data-aos="fade-up">OUR PHILOSOPHY</span>
+            <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="100">The harmony of nature captured in movement.</h2>
+            <p style="font-size: 1.2rem; line-height: 2; opacity: 0.7;" data-aos="fade-up" data-aos-delay="200">
+                At Jivit, we blend light-filled spaces with expert guidance to create an atmosphere of pure tranquility. Your journey to wellness is no longer a chore—it’s an art form.
             </p>
         </div>
-    </section>
 
-    <section style="background: #061c17;">
-        <div class="grid-container">
-            <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-feather-alt"></i>
-                <h3 style="font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px;">Royal Yoga</h3>
-                <p style="opacity: 0.6;">Ancient Vinyasa flows reimagined for maximum vitality and grace.</p>
+        <div class="card-grid">
+            <div class="luxury-card" data-aos="fade-right" data-aos-delay="100">
+                <i class="fas fa-leaf"></i>
+                <h3>Natural Yoga</h3>
+                <p style="margin-top: 15px; opacity: 0.6;">Breathwork and asanas designed to ground your energy.</p>
             </div>
-            <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="luxury-card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-bolt"></i>
-                <h3 style="font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px;">Zumba Pulse</h3>
-                <p style="opacity: 0.6;">A high-octane rhythmic explosion that shatters your limits.</p>
+                <h3>Vibrant Zumba</h3>
+                <p style="margin-top: 15px; opacity: 0.6;">High-energy rhythms to elevate your spirit and body.</p>
             </div>
-            <div class="glass-card" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-heartbeat"></i>
-                <h3 style="font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px;">Elite Aerobics</h3>
-                <p style="opacity: 0.6;">Precision cardio engineered to sculpt the physique and heart.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="reveal-text" style="text-align:center; margin-bottom: 80px;" data-aos="fade-down">The Visual Sanctuary</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-aos="zoom-in-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Zen">
-            </div>
-            <div class="gallery-item" data-aos="zoom-in-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80" alt="Gym">
-            </div>
-            <div class="gallery-item" data-aos="zoom-in-up" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=800&q=80" alt="Focus">
-            </div>
-            <div class="gallery-item" data-aos="zoom-in-up" data-aos-delay="400">
-                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="Pose">
+            <div class="luxury-card" data-aos="fade-left" data-aos-delay="300">
+                <i class="fas fa-sun"></i>
+                <h3>Morning Glow</h3>
+                <p style="margin-top: 15px; opacity: 0.6;">Start your day with heart-pumping aerobic sequences.</p>
             </div>
         </div>
     </section>
 
-    <section id="book-now" style="background: var(--emerald-mid);">
-        <div class="form-box" data-aos="perspective-up">
-            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; color: var(--gold); text-align: center; margin-bottom: 40px;">Claim Your Spot</h2>
+    <section style="background: var(--white);">
+        <span class="section-tag" style="text-align: center;">GALLERY OF MOTION</span>
+        <div class="gallery-wrap">
+            <div class="gallery-box" data-aos="reveal-left"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"></div>
+            <div class="gallery-box" data-aos="reveal-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80"></div>
+            <div class="gallery-box" data-aos="reveal-left" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=800&q=80"></div>
+            <div class="gallery-box" data-aos="reveal-right" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80"></div>
+        </div>
+    </section>
+
+    <section id="book" style="background: var(--cream);">
+        <div class="form-container" data-aos="flip-up">
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Begin Your Evolution</h2>
             <form onsubmit="sendWhatsApp(event)">
                 <input id="name" type="text" placeholder="Full Name" required>
-                <input id="phone" type="tel" placeholder="WhatsApp Connection" required>
+                <input id="phone" type="tel" placeholder="Contact Number" required>
                 <select id="service">
-                    <option value="Elite Path">Select Your Discipline</option>
-                    <option value="Yoga Mastery">Yoga Mastery</option>
-                    <option value="Zumba Rhythm">Zumba Rhythm</option>
-                    <option value="Aerobics Cardio">Aerobics Cardio</option>
+                    <option>Yoga Sanctuary</option>
+                    <option>Zumba Pulse</option>
+                    <option>Aerobic Glow</option>
                 </select>
-                <button type="submit" class="btn-gold" style="width: 100%; border: none; cursor: pointer;">Initialize Membership</button>
+                <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">CLAIM MY SLOT</button>
             </form>
         </div>
     </section>
 
-    <footer style="padding: 80px 20px; text-align: center; opacity: 0.5;">
-        <div style="font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); margin-bottom: 20px;">JIVIT.</div>
-        <p style="letter-spacing: 3px; font-size: 0.7rem;">PRAMATH NAGAR | JAMSHEDPUR | JHARKHAND</p>
+    <footer style="padding: 100px 20px; text-align: center; background: #fff;">
+        <h2 style="font-family: 'Playfair Display'; color: var(--gold); margin-bottom: 20px;">JIVIT.</h2>
+        <p style="opacity: 0.4; letter-spacing: 2px;">PRAMATH NAGAR, JAMSHEDPUR</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS with smooth durations
-        AOS.init({
-            duration: 1000,
-            once: false,
-            mirror: true
+        AOS.init({ duration: 1000, once: false, mirror: true });
+
+        // Liquid Cursor Logic
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 15 + 'px';
+            cursor.style.top = e.clientY - 15 + 'px';
         });
 
-        // Navbar interaction on scroll
+        // Sticky Nav Logic
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 8%';
-                nav.style.background = 'rgba(5, 22, 18, 0.95)';
-            } else {
-                nav.style.padding = '30px 8%';
-                nav.style.background = 'transparent';
-            }
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
         function sendWhatsApp(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
-            const message = `Greetings Jivit Wellness,%0aName: ${name}%0aContact: ${phone}%0aInterest: ${service}`;
-            window.open(`https://wa.me/919031739151?text=${message}`, '_blank');
+            const msg = `Namaste Jivit Wellness,%0aI am ${name}.%0aReach me at: ${phone}%0aI want to join: ${service}`;
+            window.open(`https://wa.me/919031739151?text=${msg}`, '_blank');
         }
     </script>
 </body>
